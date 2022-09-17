@@ -1,0 +1,59 @@
+server:
+  port: 8082
+  servlet:
+    context-path: '/epead-course/'
+
+spring:
+  application:
+    name: epead-course-service
+  datasource:
+    url: jdbc:postgresql://localhost:5434/ead-course-v2
+    username: postgres
+    password: elson
+  jpa:
+    hibernate:
+      ddl-auto: update
+      dialect: org.hibernate.dialect.PostgreSQLDialect
+      jdbc:
+        lob.non-contextual-creation: true
+    properties:
+      hibernate:
+        show_sql: true
+  output:
+    ansi:
+      enabled: Always
+  rabbitmq:
+    addresses: amqps://aaemzplb:N0eBX_-lVBUi4p8ciod7l3ehubU5i2Gb@moose.rmq.cloudamqp.com/aaemzplb
+
+logging:
+  level:
+    com.epead: TRACE
+    root: INFO
+    org.sprigframework.web: DEBUG
+    org.hibernate: INFO
+
+epead:
+  api:
+    url:
+      authuser: 'http://epead-authuser-service/epead-authuser'
+  broker:
+    exchange:
+      userEventExchange: epead.userevent
+    queue:
+      userEventQueue:
+        name: epead.userevent.ms.course
+
+resilience4j:
+  retry:
+    instances:
+      retryInstance:
+        maxRetryAttempts: 3
+        waitDuration: 5s
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include:
+          - refresh
+          - health
