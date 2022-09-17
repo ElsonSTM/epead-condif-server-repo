@@ -40,6 +40,17 @@ epead:
     exchange:
       userEvent: epead.userevent
 
+authuser:
+  refreshscope:
+    name: Elson Pinheiro
+
+management:
+  endpoints:
+    web:
+      exposure:
+        - refresh
+        - health
+
 resilience4j:
   circuitbreaker:
     instances:
