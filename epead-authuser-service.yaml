@@ -42,13 +42,15 @@ epead:
 
 authuser:
   refreshscope:
-    name: Elson Pinheiro Udpate !!!!!
+    name: Elson Pinheiro
+
 management:
   endpoints:
     web:
       exposure:
-        - refresh
-        - health
+        include:
+          - refresh
+          - health
 
 resilience4j:
   circuitbreaker:
