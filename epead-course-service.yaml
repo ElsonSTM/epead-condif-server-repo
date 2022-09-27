@@ -39,9 +39,12 @@ epead:
   broker:
     exchange:
       userEventExchange: epead.userevent
+      notificationCommandExchange: epead.notificationcommand
     queue:
       userEventQueue:
         name: epead.userevent.ms.course
+    key:
+      notificationCommandKey: ms.notification
 
 resilience4j:
   retry:
