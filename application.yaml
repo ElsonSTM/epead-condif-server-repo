@@ -1,7 +1,12 @@
+epead:
+  serviceRegistry:
+    username: elson
+    password: 'epead123'
+
 eureka:
   client:
     service-url:
-      defaultZone: 'http://localhost:8761/eureka'
+      defaultZone: 'http://${epead.serviceRegistry.username}:${epead.serviceRegistry.password}@localhost:8761/eureka'
   instance:
     hostname: localhost
 
